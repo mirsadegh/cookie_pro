@@ -276,3 +276,4 @@ cookie_pro/static/webpack_bundles/
 webpack-stats.json
 
 .envs/
+.ipython/

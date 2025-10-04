@@ -22,17 +22,33 @@ services:
     command: /start
 
   postgres:
-    build:
-      context: .
-      dockerfile: ./compose/production/postgres/Dockerfile
-    image: cookiecutter_django_production_postgres
+    image: postgres:17
     container_name: cookiecutter_django_local_postgres
     volumes:
       - cookiecutter_django_local_postgres_data:/var/lib/postgresql/data
       - cookiecutter_django_local_postgres_data_backups:/backups
-    env_file:
-      - ./.envs/.local/.postgres
+    environment:
+      - POSTGRES_DB=cookie_pro
+      - POSTGRES_USER=sadegh
+      - POSTGRES_PASSWORD=ms@155222
+    ports:
+      - '5433:5432'
 
   redis:
     image: redis:6
     container_name: cookiecutter_django_local_redis
+
+  node:
+    build:
+      context: .
+      dockerfile: ./compose/local/node/Dockerfile
+    image: cookiecutter_django_local_node
+    container_name: cookiecutter_django_local_node
+    depends_on:
+      - django
+    volumes:
+      - .:/app:z
+      - /app/node_modules
+    command: npm run dev
+    ports:
+      - '3000:3000'

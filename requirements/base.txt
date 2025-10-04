@@ -1,6 +1,25 @@
+# ... پکیج‌های اصلی که از قبل داشتید (django, psycopg2-binary و ...)
+
 asgiref==3.7.2
 django==4.2.7
 django-environ==0.11.2
 psycopg2-binary==2.9.9
 pytz==2023.3
 whitenoise==6.6.0
+
+# ...
+
+# Third Party Apps (Core Functionality)
+# ------------------------------------------------------------------------------
+django-allauth
+django-crispy-forms
+crispy-bootstrap5
+djangorestframework
+django-cors-headers
+drf-spectacular
+django-webpack-loader
+
+# Celery
+# ------------------------------------------------------------------------------
+celery[redis]
+django-celery-beat

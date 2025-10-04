@@ -12,7 +12,8 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 COPY ./requirements /requirements
-RUN pip install -r /requirements/local.txt
+# RUN pip install -r /requirements/local.txt
+RUN pip install --timeout 300 --retries 3 -r /requirements/local.txt
 
 COPY ./compose/local/django/entrypoint /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint
@@ -24,4 +25,4 @@ RUN chmod +x /start
 
 WORKDIR /app
 
-ENTRYPOINT ["/entrypoint"]c
+ENTRYPOINT ["/entrypoint"]
