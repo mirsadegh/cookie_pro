@@ -1,7 +1,7 @@
 # ... پکیج‌های اصلی که از قبل داشتید (django, psycopg2-binary و ...)
 
 asgiref==3.7.2
-django==4.2.7
+django==5.2.7
 django-environ==0.11.2
 psycopg2-binary==2.9.9
 pytz==2023.3
